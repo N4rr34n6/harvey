@@ -138,15 +138,6 @@ def process_tweet(tweet):
     except:
         pass
 
-"""
-    # Adding timezone from profile offset to set to local hours
-    #if tweet.user.utc_offset and not args.no_timezone:
-        #tw_date = (tweet.created_at + datetime.timedelta(seconds=tweet.user.utc_offset))
-
-    #if args.utc_offset:
-        #tw_date = (tweet.created_at + datetime.timedelta(seconds=args.utc_offset))
-"""
-
     # Updating our activity datasets (distribution maps)
     actividad_horaria["%s:00" % str(tw_date.hour).zfill(2)] += 1
     actividad_semanal[str(tw_date.weekday())] += 1
@@ -318,7 +309,7 @@ def main():
     print(color.BLUE + "[+] " + color.ENDC +" Obteniendo ultimos "+ color.BLUE + str(num_tweets) + color.ENDC +" tweets...")
 
     # DESCARGA DE TWEETS
-    num_tweets = get_tweets(twitter_api, username_target, limit=num_tweets)
+    num_tweets = get_tweets(twitter_api, username_target, limit=limite_tweets)
     print(color.BLUE + "[+] " + color.ENDC +" Descargando %d tweets desde %s hasta %s (%d dias)" % (num_tweets, fecha_inicio, fecha_final, (fecha_final - fecha_inicio).days))
 
     if (fecha_final - fecha_inicio).days != 0:
