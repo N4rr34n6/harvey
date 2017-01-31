@@ -107,9 +107,9 @@ def process_tweet(tweet):
     global retweeted_names
     global usuarios_mencionados
 
-    # Check for filters before processing any further
-    if args.filter and tweet.source:
-        if not args.filter.lower() in tweet.source.lower():
+    # Check for filtros before processing any further
+    if args.filtro and tweet.source:
+        if not args.filtro.lower() in tweet.source.lower():
             return
 
     tw_date = tweet.created_at
@@ -271,7 +271,7 @@ def main():
 
     username_target = raw_input("Introduzca el alias del objetivo: ")
 
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret,secure=True)
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth)
 
@@ -293,7 +293,7 @@ def main():
     print("[+] statuses_count : \033[1m%s\033[0m" % user_info.statuses_count)
 
     # Will retreive all Tweets from account (or max limit)
-    num_tweets = numpy.amin([args.limit, user_info.statuses_count])
+    num_tweets = numpy.amin([args.limite, user_info.statuses_count])
     print("[+] Retrieving last %d tweets..." % num_tweets)
 
     # Download tweets
