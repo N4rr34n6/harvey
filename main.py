@@ -1,5 +1,5 @@
 import os
-import fwhibbit_analyzer as fwhibbit_analyzer
+import Analizador.fwhibbit_analyzer as fwhibbit_analyzer
 
 eleccion_menu = 0
 
@@ -14,23 +14,28 @@ class color:  # COLOR TEXTO
     UNDERLINE = '\033[4m'
 
 ####MENUS
-def limpiar():  # LIMPIAR PANTALLA
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        os.system('tput reset')
-
 def salir():
-    limpiar()
-    print "\tScript escrito por " + color.BOLD + "Fwhibbit" + color.ENDC
-    print "\nContacto:"
-    print color.INFO + "Email: " + color.ENDC + "info@fwhibbit.es"
-    print color.INFO + "Web: " + color.ENDC + "httpss://www.fwhibbit.es/"
-    print color.INFO + "Twitter: " + color.ENDC + "@fwhibbit_blog\n"
+    fwhibbit_analyzer.limpiar_pantalla()
+    mostrar_logo()
+    print "\n\tContacto:"
+    print color.INFO + "\tEmail: " + color.ENDC + "info@fwhibbit.es"
+    print color.INFO + "\tWeb: " + color.ENDC + "httpss://www.fwhibbit.es/"
+    print color.INFO + "\tTwitter: " + color.ENDC + "@fwhibbit_blog\n"
 
+def mostrar_menu_principal():
+    mostrar_logo()
+    print("+---------------------------------------------------------------------------+")
+    print(color.INFO + "\t\t\t   >> MENU PRINCIPAL <<" + color.ENDC)
+    print("+---------------------------------------------------------------------------+")
+    print color.FAIL + "\n Bienvenido a fwibbit. Seleccione una opcion: \n" + color.ENDC
+    print "\t1 - Analizar un objetivo"
+    print "\t2 - Mapa ultimos tweets"
+    print "\tq - Salir \n"
+    eleccion_menu=raw_input("Elija la opcion que desee: ")
+    return eleccion_menu
 
-def logo():  # LOGO
-    limpiar()
+def mostrar_logo():  # LOGO
+    fwhibbit_analyzer.limpiar_pantalla()
     print '''\033[1;32m\t
 
         `.--:++/.
@@ -49,16 +54,11 @@ def logo():  # LOGO
 ################################################################################################
 #                               PROGRAMA PRINCIPAL                                             #
 ################################################################################################
-logo()
-print(color.INFO + "\t\t\t>> MENU PRINCIPAL <<" + color.ENDC)
-print("+---------------------------------------------------------------------------+")
-print color.FAIL + "\n Selecciona una opcion" + color.ENDC
-print "\t1 - Analizar un objetivo"
-print "\t2 - OPCION2"
-print "\t3 - OPCION3"
-print "\t0 - Salir"
 
-eleccion_menu=raw_input("Elija la opcion que desee: ")
-
-if(int(eleccion_menu) == 1):
+eleccion_menu =mostrar_menu_principal()
+if(str(eleccion_menu) == "q"):
+    salir()
+elif(int(eleccion_menu) == 1):
     fwhibbit_analyzer.main()
+    raw_input(color.FAIL+"Pulse cualquier tecla para volver al menu principal..."+color.ENDC)
+    mostrar_menu_principal()

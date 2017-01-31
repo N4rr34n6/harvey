@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-#
-# Usage:
-# python2 twanalzr.py -n screen_name
-#
 # Install:
 # pip install tweepy ascii_graph tqdm numpy
 from ascii_graph import Pyasciigraph
@@ -16,25 +11,28 @@ import numpy
 import argparse
 import datetime
 import os
-
 from secrets import consumer_key, consumer_secret, access_token, access_token_secret
+
+################################################################################################
+#                                   COLORES                                                    #
+################################################################################################
+class color:  # COLOR TEXTO
+    FAIL = '\033[91m'
+    BLUE = '\033[94m'
+    INFO = '\033[93m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    GREEN = '\033[92m'
+    UNDERLINE = '\033[4m'
 
 ################################################################################################
 #                       ARGUMENTOS PARA EL HELP DEL PROGRAMA                                   #
 ################################################################################################
 parser = argparse.ArgumentParser(description='Analizar la actividad de una cuenta de twitter.')
-parser.add_argument('-l', '--limite', metavar='N', type=int, default=1000,
-                    help='limite de tweets para analizar (defecto=1000)')
-
-parser.add_argument('-f', '--filtro', help='filtro por fuente (ex. -f android analizará solo los tweets de android)')
-
-parser.add_argument('--no-timezone',  action='store_true',
-                    help='removes the timezone auto-adjustment (default is UTC)')
-
-parser.add_argument('--utc-offset',  type=int,
-                    help='aplicar una zona horaria específica (en segundos)')
-
-
+parser.add_argument('-l', '--limite', metavar='N', type=int, default=1000, help='limite de tweets para analizar (defecto=1000)')
+parser.add_argument('-f', '--filtro', help='filtro por fuente (ex. -f android analizara solo los tweets de android)')
+parser.add_argument('--no-timezone',  action='store_true',help='removes the timezone auto-adjustment (default is UTC)')
+parser.add_argument('--utc-offset',  type=int,help='aplicar una zona horaria especifica (en segundos)')
 args = parser.parse_args()
 
 ################################################################################################
@@ -90,9 +88,14 @@ retweets = 0
 usuarios_retweeteados = {}
 usuarios_mencionados = {}
 id_screen_names = {}
+limite_tweets = 500
 
+
+################################################################################################
+#                                   PROCESAR TWEEET                                            #
+################################################################################################
 def process_tweet(tweet):
-    """ Processing a single Tweet and updating our datasets """
+    """ Procesar un unico tweet y actualizar la base de datos """
     global actividad_horaria
     global actividad_semanal
     global fecha_inicio
@@ -189,33 +192,37 @@ def process_tweet(tweet):
             if not ht['screen_name'] in id_screen_names:
                 id_screen_names[ht['id_str']] = "@%s" % ht['screen_name']
 
+
+
 def get_tweets(api, username, limit):
     """ Download Tweets from username account """
     i = 0
-    for status in tqdm(
-        tweepy.Cursor(api.user_timeline, screen_name=username).items(),
-        unit="tw", total=limit):
+    for status in tqdm(tweepy.Cursor(api.user_timeline, screen_name=username).items(),unit="tw", total=limit):
         process_tweet(status)
         i += 1
         if i >= limit:
             break;
     return i
 
+def get_last_tweet(api,username):
+    tweet = api.user_timeline(username, count = 1)[0]
+    print(tweet.text)
+
 def int_to_weekday(day):
     if day == "0":
-        return "Monday"
+        return "Lunes"
     elif day == "1":
-        return "Tuesday"
+        return "Martes"
     elif day == "2":
-        return "Wednesday"
+        return "Miercoles"
     elif day == "3":
-        return "Thursday"
+        return "Jueves"
     elif day == "4":
-        return "Friday"
+        return "Viernes"
     elif day == "5":
-        return "Saturday"
+        return "Sabado"
     else:
-        return "Sunday"
+        return "Domingo"
 
 def print_stats(dataset, top=5):
     """ Displays top values by order """
@@ -267,6 +274,12 @@ def print_charts(dataset, title, weekday=False):
         print(line)
     print("")
 
+def limpiar_pantalla():  # LIMPIAR PANTALLA
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system('tput reset')
+
 def main():
 
     username_target = raw_input("Introduzca el alias del objetivo: ")
@@ -275,66 +288,79 @@ def main():
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth)
 
+    limpiar_pantalla()
+    print(color.FAIL + "Comenzando analisis..." + color.ENDC)
+    #Pausa dramatica
+    time.sleep(3)
+
+    print("\n##############################################################################################################")
+    print(color.INFO + "\t\t\t\t >>> Ultimo tweet de " + str(username_target) + " <<<" + color.ENDC)
+    get_last_tweet(twitter_api, username_target)
+    print("##############################################################################################################\n")
+
     # Getting data on account
-    print("[+] Getting @%s account data..." % username_target)
+    print(color.BLUE + "[+] " + color.ENDC +" Obteniendo informacion sobre " + color.BLUE + "@" + str(username_target) + color.ENDC)
     user_info = twitter_api.get_user(screen_name=username_target)
 
-    print("[+] lang           : \033[1m%s\033[0m" % user_info.lang)
-    print("[+] geo_enabled    : \033[1m%s\033[0m" % user_info.geo_enabled)
-    print("[+] time_zone      : \033[1m%s\033[0m" % user_info.time_zone)
-    print("[+] utc_offset     : \033[1m%s\033[0m" % user_info.utc_offset)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO +" Lenguaje de la cuenta           : "+ color.ENDC +" \033[1m%s\033[0m" % user_info.lang)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO +" Geolocalizacion activa          : "+ color.ENDC +" \033[1m%s\033[0m" % user_info.geo_enabled)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO +" Zona horaria                    : "+ color.ENDC +" \033[1m%s\033[0m" % user_info.time_zone)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO +" Intervalo UTC                   : "+ color.ENDC +" \033[1m%s\033[0m" % user_info.utc_offset)
 
     if user_info.utc_offset is None:
-        print("[\033[91m!\033[0m] Can't get specific timezone for this user")
+        print("[\033[91m!\033[0m] No se ha podido encontrar zona horaria")
 
     if args.utc_offset:
         print("[\033[91m!\033[0m] Applying timezone offset %d (--utc-offset)" % args.utc_offset)
 
-    print("[+] statuses_count : \033[1m%s\033[0m" % user_info.statuses_count)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO +" Tweets totales : "+ color.ENDC +" \033[1m%s\033[0m" % user_info.statuses_count)
 
-    # Will retreive all Tweets from account (or max limit)
-    num_tweets = numpy.amin([args.limite, user_info.statuses_count])
-    print("[+] Retrieving last %d tweets..." % num_tweets)
 
-    # Download tweets
+    # Obtener ultimos tweets
+    num_tweets = numpy.amin([limite_tweets, user_info.statuses_count])
+    print(color.BLUE + "[+] " + color.ENDC +" Obteniendo ultimos "+ color.BLUE + str(num_tweets) + color.ENDC +" tweets...")
+
+    # DESCARGA DE TWEETS
     num_tweets = get_tweets(twitter_api, username_target, limit=num_tweets)
-    print("[+] Downloaded %d tweets from %s to %s (%d days)" % (num_tweets, fecha_inicio, fecha_final, (fecha_final - fecha_inicio).days))
+    print(color.BLUE + "[+] " + color.ENDC +" Descargando %d tweets desde %s hasta %s (%d dias)" % (num_tweets, fecha_inicio, fecha_final, (fecha_final - fecha_inicio).days))
 
     if (fecha_final - fecha_inicio).days != 0:
-        print("[+] Average number of tweets per day: \033[1m%.1f\033[0m" % (num_tweets / float((fecha_final - fecha_inicio).days)))
+        print(color.BLUE + "[+] " + color.ENDC +" Media de tweets por dia: \033[1m%.1f\033[0m" % (num_tweets / float((fecha_final - fecha_inicio).days)))
 
-    # Print activity distrubution charts
-    print_charts(actividad_horaria, "Daily activity distribution (per hour)")
-    print_charts(actividad_semanal, "Weekly activity distribution (per day)", weekday=True)
+    # GRAFICAS
+    print("\n\n")
+    print_charts(actividad_horaria, color.BLUE + "[+] "+ color.INFO +"Distribucion de actividad horaria (por horas)"+ color.ENDC)
+    print_charts(actividad_semanal, color.BLUE + "[+] "+ color.INFO +"Distribucion de actividad semanal (por dias)"+ color.ENDC, weekday=True)
+    print("\n\n")
 
-    print "[+] Detected languages (top 5)"
+    print color.BLUE + "[+] " + color.ENDC +" Lenguajes detectados (top 5)"
     print_stats(lenguajes_detectados)
 
-    print "[+] Detected sources (top 10)"
+    print color.BLUE + "[+] " + color.ENDC +" Detected sources (top 10)"
     print_stats(detected_sources, top=10)
 
-    print("[+] There are \033[1m%d\033[0m geo enabled tweet(s)" % geo_activo_tweets)
+    print(color.BLUE + "[+] " + color.ENDC +" Hay \033[1m%d\033[0m tweets con geolocalizacion activa" % geo_activo_tweets)
     if len(lugares_detectados) != 0:
-        print "[+] Detected places (top 10)"
+        print color.BLUE + "[+] " + color.ENDC +" Lugares detectados (top 10)"
         print_stats(lugares_detectados, top=10)
 
-    print "[+] Top 10 hashtags"
+    print color.BLUE + "[+] " + color.ENDC +" Top 10 hashtags"
     print_stats(hashtags_detectados, top=10)
 
-    print "[+] @%s did \033[1m%d\033[0m RTs out of %d tweets (%.1f%%)" % (username_target, retweets, num_tweets, (float(retweets)*100/num_tweets))
+    print color.BLUE + "[+] " + color.ENDC +" @%s hizo \033[1m%d\033[0m RTs de un total de %d tweets (%.1f%%)" % (username_target, retweets, num_tweets, (float(retweets)*100/num_tweets))
 
     # Converting users id to screen_names
     usuarios_retweeteados_names = {}
     for k in usuarios_retweeteados.keys():
         usuarios_retweeteados_names[id_screen_names[k]] = usuarios_retweeteados[k]
 
-    print "[+] Top 5 most retweeted users"
+    print color.BLUE + "[+] " + color.ENDC +" Top 5 usuarios mas retweeteados"
     print_stats(usuarios_retweeteados_names, top=5)
 
     usuarios_mencionados_names = {}
     for k in usuarios_mencionados.keys():
         usuarios_mencionados_names[id_screen_names[k]] = usuarios_mencionados[k]
-    print "[+] Top 5 most mentioned users"
+    print color.BLUE + "[+] " + color.ENDC +" Top 5 usuarios mas mencionados"
     print_stats(usuarios_mencionados_names, top=5)
 
 if __name__ == '__main__':
