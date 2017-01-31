@@ -28,13 +28,14 @@ class color:  # COLOR TEXTO
 ################################################################################################
 #                       ARGUMENTOS PARA EL HELP DEL PROGRAMA                                   #
 ################################################################################################
+"""
 parser = argparse.ArgumentParser(description='Analizar la actividad de una cuenta de twitter.')
 parser.add_argument('-l', '--limite', metavar='N', type=int, default=1000, help='limite de tweets para analizar (defecto=1000)')
 parser.add_argument('-f', '--filtro', help='filtro por fuente (ex. -f android analizara solo los tweets de android)')
 parser.add_argument('--no-timezone',  action='store_true',help='removes the timezone auto-adjustment (default is UTC)')
 parser.add_argument('--utc-offset',  type=int,help='aplicar una zona horaria especifica (en segundos)')
 args = parser.parse_args()
-
+"""
 ################################################################################################
 #                                   VARIABLES GLOBALES                                         #
 ################################################################################################
@@ -90,7 +91,6 @@ usuarios_mencionados = {}
 id_screen_names = {}
 limite_tweets = 500
 
-
 ################################################################################################
 #                                   PROCESAR TWEEET                                            #
 ################################################################################################
@@ -111,9 +111,9 @@ def process_tweet(tweet):
     global usuarios_mencionados
 
     # Check for filtros before processing any further
-    if args.filtro and tweet.source:
-        if not args.filtro.lower() in tweet.source.lower():
-            return
+    #if args.filtro and tweet.source:
+        #if not args.filtro.lower() in tweet.source.lower():
+            #return
 
     tw_date = tweet.created_at
 
@@ -138,12 +138,14 @@ def process_tweet(tweet):
     except:
         pass
 
+"""
     # Adding timezone from profile offset to set to local hours
-    if tweet.user.utc_offset and not args.no_timezone:
-        tw_date = (tweet.created_at + datetime.timedelta(seconds=tweet.user.utc_offset))
+    #if tweet.user.utc_offset and not args.no_timezone:
+        #tw_date = (tweet.created_at + datetime.timedelta(seconds=tweet.user.utc_offset))
 
-    if args.utc_offset:
-        tw_date = (tweet.created_at + datetime.timedelta(seconds=args.utc_offset))
+    #if args.utc_offset:
+        #tw_date = (tweet.created_at + datetime.timedelta(seconds=args.utc_offset))
+"""
 
     # Updating our activity datasets (distribution maps)
     actividad_horaria["%s:00" % str(tw_date.hour).zfill(2)] += 1
@@ -191,8 +193,6 @@ def process_tweet(tweet):
 
             if not ht['screen_name'] in id_screen_names:
                 id_screen_names[ht['id_str']] = "@%s" % ht['screen_name']
-
-
 
 def get_tweets(api, username, limit):
     """ Download Tweets from username account """
@@ -309,9 +309,6 @@ def main():
 
     if user_info.utc_offset is None:
         print("[\033[91m!\033[0m] No se ha podido encontrar zona horaria")
-
-    if args.utc_offset:
-        print("[\033[91m!\033[0m] Applying timezone offset %d (--utc-offset)" % args.utc_offset)
 
     print(color.BLUE + "[+] " + color.ENDC + color.INFO +" Tweets totales : "+ color.ENDC +" \033[1m%s\033[0m" % user_info.statuses_count)
 
