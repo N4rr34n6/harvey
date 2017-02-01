@@ -63,16 +63,15 @@ def mostrar_logo():  # LOGO
 ################################################################################################
 #                               PROGRAMA PRINCIPAL                                             #
 ################################################################################################
+eleccion_menu = mostrar_menu_principal()
+while(str(eleccion_menu) is not "q"):
+    if(int(eleccion_menu) == 1):
+        fwhibbit_analyzer.main()
+    elif(int(eleccion_menu) == 2):
+        geo_spain.main()
+    elif(int(eleccion_menu) == 3):
+        streaming_tweets.main()
+    raw_input(color.FAIL+"Pulse cualquier tecla para volver al menu principal..."+color.ENDC)
+    eleccion_menu = mostrar_menu_principal()
 
-eleccion_menu =mostrar_menu_principal()
-if(str(eleccion_menu) == "q"):
-    salir()
-elif(int(eleccion_menu) == 1):
-    fwhibbit_analyzer.main()
-elif(int(eleccion_menu) == 2):
-    geo_spain.main()
-elif(int(eleccion_menu) == 3):
-    streaming_tweets.main()
-
-raw_input(color.FAIL+"Pulse cualquier tecla para volver al menu principal..."+color.ENDC)
-mostrar_menu_principal()
+salir()

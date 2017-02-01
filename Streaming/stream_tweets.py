@@ -11,14 +11,24 @@ auth.set_access_token(access_token, access_token_secret)
 twitter_api = tweepy.API(auth)
 
 class CustomStreamListener(tweepy.StreamListener):
+
+    def __init__(self,time_limit):
+        self.start_time = time.time()
+        self.limit = time_limit
+        super(CustomStreamListener,self).__init__()
+
     def on_status(self, status):
-        print(">----------------------------------------------------<")
-        print color.INFO + "Usuario: " + color.ENDC + str(status.user.screen_name)
-        if(status.geo is not None):
-            print color.INFO + "Geolocalizacion: " + color.ENDC + str(status.coordinates["coordinates"])
-        print status.text
-        print(">----------------------------------------------------<\n")
-        time.sleep(1)
+        if(time.time() - self.start_time) < self.limit:
+            print(">----------------------------------------------------<")
+            print color.INFO + "Usuario: " + color.ENDC + str(status.user.screen_name)
+            if(status.geo is not None):
+                print color.INFO + "Geolocalizacion: " + color.ENDC + str(status.coordinates["coordinates"])
+            print status.text
+            print(">----------------------------------------------------<\n")
+            time.sleep(1)
+            return True
+        else:
+            return False
 
     def on_error(self, status_code):
         print >> sys.stderr, 'Encountered error with status code:', status_code
@@ -29,14 +39,11 @@ class CustomStreamListener(tweepy.StreamListener):
         return True # Don't kill the stream
 
 def main():
-    sapi = tweepy.streaming.Stream(auth, CustomStreamListener())
     #sapi.filter(locations=[-180,-90,180,90]))
     limpiar_pantalla()
-
     list_key_word=raw_input("Especifique alguna palabra/s para el filtro (separadas por comas): ").split(", ")
-
     print(color.FAIL + "Comenzando streaming de tweets por parametros..." + color.ENDC)
     #Pausa dramatica
     time.sleep(3)
-
+    sapi = tweepy.streaming.Stream(auth, CustomStreamListener(20))
     sapi.filter(track=list_key_word)

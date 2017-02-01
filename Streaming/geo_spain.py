@@ -45,6 +45,6 @@ def main():
     print(color.FAIL + "Comenzando streaming de tweets por España..." + color.ENDC)
     #Pausa dramatica
     time.sleep(3)
-    sapi = tweepy.streaming.Stream(auth, CustomStreamListener(5))
+    sapi = tweepy.streaming.Stream(auth, CustomStreamListener(20))
     SPAIN_GEOBOX = [-9.38,36.05,3.35,43.75]
     sapi.filter(languages=["es"], locations=SPAIN_GEOBOX)
