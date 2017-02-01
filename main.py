@@ -4,6 +4,8 @@ import os
 import Analizador.fwhibbit_analyzer as fwhibbit_analyzer
 import Streaming.stream_tweets as streaming_tweets
 import Streaming.geo_spain as geo_spain
+import Mapas.myMap as myMap
+import Mapas.myMapSpain as myMapSpain
 
 eleccion_menu = 0
 
@@ -39,6 +41,8 @@ def mostrar_menu_principal():
     print "\t1 - Analizar un objetivo"
     print "\t2 - Streaming de tweets en España"
     print "\t3 - Streaming de tweets por keyword"
+    print "\t4 - Mapa de tweets mundial"
+    print "\t5 - Mapa de tweets nacional"
     print "\tq - Salir \n"
     eleccion_menu=raw_input("Elija la opcion que desee: ")
     return eleccion_menu
@@ -71,6 +75,11 @@ while(str(eleccion_menu) is not "q"):
         geo_spain.main()
     elif(int(eleccion_menu) == 3):
         streaming_tweets.main()
+    elif(int(eleccion_menu) == 4):
+        myMap.main()
+    elif(int(eleccion_menu) == 5):
+        myMapSpain.main()
+
     raw_input(color.FAIL+"Pulse cualquier tecla para volver al menu principal..."+color.ENDC)
     eleccion_menu = mostrar_menu_principal()
 
