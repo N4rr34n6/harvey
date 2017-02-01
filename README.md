@@ -2,8 +2,6 @@
 
 ## [FWHIBBIT](http://fwhibbit.github.io/) - [Blog](http://fwhibbit.blogspot.com.es/)
 
-![logo](/img/logo/avatar_escalado.jpg)
-
 [FWHIBBIT](http://fwhibbit.github.io/) es un grupo formado por una serie de amigos que estudian y trabajan sobre nuevas ideas en el ámbito de la ciberseguridad. Puedes seguir nuestro [blog](http://fwhibbit.blogspot.com.es/) para más información.
 
 ## Mejoras
