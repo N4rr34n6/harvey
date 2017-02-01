@@ -1,5 +1,5 @@
-# Install:
-# pip install tweepy ascii_graph tqdm numpy
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
 from ascii_graph import Pyasciigraph
 from ascii_graph.colors import *
 from ascii_graph.colordata import vcolor
@@ -273,21 +273,33 @@ def limpiar_pantalla():  # LIMPIAR PANTALLA
 
 def main():
 
-    username_target = raw_input("Introduzca el alias del objetivo: ")
+    username_target = raw_input(color.BLUE + "[x] " + color.ENDC + color.INFO + "Introduzca el alias de twitter del objetivo:" + color.ENDC)
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth)
 
     limpiar_pantalla()
-    print(color.FAIL + "Comenzando analisis..." + color.ENDC)
+    print(color.BOLD + """\t\t\t
+                                                    _       _
+                                                    \ \     / /              (\_/)
+                                                      \ \_/ /                (0.0)
+                                                      ( -.- )               (") (")
+                                                    (,,) . (,,)             (      )
+                                                    (" _)-(_ ")             (,,)(,,)
+
+                                                        Harvey is working on it
+                                                            Please stand by
+                                                            >--------------<
+    """ + color.ENDC)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Comenzando el análisis de objetivo..." + color.ENDC)
     #Pausa dramatica
     time.sleep(3)
 
-    print("\n##############################################################################################################")
+    print(color.BLUE + "\n############################################################################################################################################" + color.ENDC)
     print(color.INFO + "\t\t\t\t >>> Ultimo tweet de " + str(username_target) + " <<<" + color.ENDC)
     get_last_tweet(twitter_api, username_target)
-    print("##############################################################################################################\n")
+    print(color.BLUE + "############################################################################################################################################\n" + color.ENDC)
 
     # Getting data on account
     print(color.BLUE + "[+] " + color.ENDC +" Obteniendo informacion sobre " + color.BLUE + "@" + str(username_target) + color.ENDC)
@@ -306,7 +318,7 @@ def main():
 
     # Obtener ultimos tweets
     num_tweets = numpy.amin([limite_tweets, user_info.statuses_count])
-    print(color.BLUE + "[+] " + color.ENDC +" Obteniendo ultimos "+ color.BLUE + str(num_tweets) + color.ENDC +" tweets...")
+    print(color.BLUE + "[+] " + color.ENDC + " Obteniendo ultimos" + color.BLUE + str(num_tweets) + color.ENDC +" tweets...")
 
     # DESCARGA DE TWEETS
     num_tweets = get_tweets(twitter_api, username_target, limit=limite_tweets)
@@ -321,18 +333,18 @@ def main():
     print_charts(actividad_semanal, color.BLUE + "[+] "+ color.INFO +"Distribucion de actividad semanal (por dias)"+ color.ENDC, weekday=True)
     print("\n\n")
 
-    print color.BLUE + "[+] " + color.ENDC +" Lenguajes detectados (top 5)"
+    print color.BLUE + "[+] " + color.ENDC + color.INFO + " Lenguajes detectados" + color.ENDC + " (top 5)"
     print_stats(lenguajes_detectados)
 
-    print color.BLUE + "[+] " + color.ENDC +" Detected sources (top 10)"
+    print color.BLUE + "[+] " + color.ENDC + color.INFO + " Plataformas detectadas" + color.ENDC
     print_stats(detected_sources, top=10)
 
     print(color.BLUE + "[+] " + color.ENDC +" Hay \033[1m%d\033[0m tweets con geolocalizacion activa" % geo_activo_tweets)
     if len(lugares_detectados) != 0:
-        print color.BLUE + "[+] " + color.ENDC +" Lugares detectados (top 10)"
+        print color.BLUE + "[+] " + color.ENDC + color.INFO + " Lugares detectados" + color.ENDC + " (top 10)"
         print_stats(lugares_detectados, top=10)
 
-    print color.BLUE + "[+] " + color.ENDC +" Top 10 hashtags"
+    print color.BLUE + "[+] " + color.ENDC + color.INFO + " Top detectados" + color.ENDC + " 10 " + color.INFO + "hashtags" + color.ENDC
     print_stats(hashtags_detectados, top=10)
 
     print color.BLUE + "[+] " + color.ENDC +" @%s hizo \033[1m%d\033[0m RTs de un total de %d tweets (%.1f%%)" % (username_target, retweets, num_tweets, (float(retweets)*100/num_tweets))
@@ -342,13 +354,13 @@ def main():
     for k in usuarios_retweeteados.keys():
         usuarios_retweeteados_names[id_screen_names[k]] = usuarios_retweeteados[k]
 
-    print color.BLUE + "[+] " + color.ENDC +" Top 5 usuarios mas retweeteados"
+    print color.BLUE + "[+] " + color.ENDC + color.INFO + " Top " + color.ENDC + "5 " + color.INFO + "usuarios mas retweeteados" + color.ENDC
     print_stats(usuarios_retweeteados_names, top=5)
 
     usuarios_mencionados_names = {}
     for k in usuarios_mencionados.keys():
         usuarios_mencionados_names[id_screen_names[k]] = usuarios_mencionados[k]
-    print color.BLUE + "[+] " + color.ENDC +" Top 5 usuarios mas mencionados"
+    print color.BLUE + "[+] " + color.ENDC + color.INFO + " Top " + color.ENDC + "5 " + color.INFO + "usuarios mas mencionados" + color.ENDC
     print_stats(usuarios_mencionados_names, top=5)
 
 if __name__ == '__main__':

@@ -1,13 +1,13 @@
-# fwhibbit_analyser
+# HARVEY
 
-## [FWHIBBIT](http://fwhibbit.github.io/) - [Blog](http://fwhibbit.blogspot.com.es/)
+## [FWHIBBIT](http://fwhibbit.github.io/) - [Blog](https://fwhibbit.es/)
 
-[FWHIBBIT](http://fwhibbit.github.io/) es un grupo formado por una serie de amigos que estudian y trabajan sobre nuevas ideas en el ámbito de la ciberseguridad. Puedes seguir nuestro [blog](http://fwhibbit.blogspot.com.es/) para más información.
+[FWHIBBIT](http://fwhibbit.github.io/) es un grupo formado por una serie de amigos que estudian y trabajan sobre nuevas ideas en el ámbito de la ciberseguridad. Puedes seguir nuestro [blog](https://fwhibbit.es/) para más información.
 
 ## Mejoras
 - [x] Reestructuración del programa
 - [x] Banner con último tweet. Toda la información siempre disponible al momento.
-- [ ] Posibilidad de análisis completo de objetivo.
+- [x] Posibilidad de análisis completo de objetivo.
 - [x] Obtener tweets mediante geolocalización. Interesante para tema de manifestaciones y grandes quedadas.
 - [x] Mapa donde se muestren los tweets que queremos.
 

@@ -1,10 +1,10 @@
 #!/usr/bin/python -tt
 # -*- coding: utf-8 -*-
-import os
+import os,time
 import Analizador.fwhibbit_analyzer as fwhibbit_analyzer
 import Streaming.stream_tweets as streaming_tweets
 import Streaming.geo_spain as geo_spain
-import Mapas.myMap as myMap
+import Mapas.myMapWorld as myMapWorld
 import Mapas.myMapSpain as myMapSpain
 
 eleccion_menu = 0
@@ -26,6 +26,21 @@ class color:  # COLOR TEXTO
 ################################################################################################
 def salir():
     fwhibbit_analyzer.limpiar_pantalla()
+    print(color.BOLD + """\t\t\t
+                                                    _       _
+                                                    \ \     / /              (\_/)
+                                                      \ \_/ /                (0.0)
+                                                      ( -.- )               (") (")
+                                                    (,,) . (,,)             (      )
+                                                    (" _)-(_ ")             (,,)(,,)
+
+                                                            Have a nice day
+                                                    Please don't stop talking to Harvey
+                                                          Only you can see him
+                                                            >--------------<
+    """ + color.ENDC)
+    time.sleep(2)
+    fwhibbit_analyzer.limpiar_pantalla()
     mostrar_logo()
     print "\n\tContacto:"
     print color.INFO + "\tEmail: " + color.ENDC + "info@fwhibbit.es"
@@ -34,17 +49,26 @@ def salir():
 
 def mostrar_menu_principal():
     mostrar_logo()
-    print("+---------------------------------------------------------------------------+")
-    print(color.INFO + "\t\t\t   >> MENU PRINCIPAL <<" + color.ENDC)
-    print("+---------------------------------------------------------------------------+")
-    print color.FAIL + "\n Bienvenido a fwibbit. Seleccione una opcion: \n" + color.ENDC
-    print "\t1 - Analizar un objetivo"
-    print "\t2 - Streaming de tweets en España"
-    print "\t3 - Streaming de tweets por keyword"
-    print "\t4 - Mapa de tweets mundial"
-    print "\t5 - Mapa de tweets nacional"
-    print "\tq - Salir \n"
-    eleccion_menu=raw_input("Elija la opcion que desee: ")
+    print(color.INFO + '''\t\t\t
+	 ██░ ██  ▄▄▄       ██▀███   ██▒   █▓▓█████▓██   ██▓
+	▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓██░   █▒▓█   ▀ ▒██  ██▒
+	▒██▀▀██░▒██  ▀█▄  ▓██ ░▄█ ▒ ▓██  █▒░▒███    ▒██ ██░
+	░▓█ ░██ ░██▄▄▄▄██ ▒██▀▀█▄    ▒██ █░░▒▓█  ▄  ░ ▐██▓░
+	░▓█▒░██▓ ▓█   ▓██▒░██▓ ▒██▒   ▒▀█░  ░▒████▒ ░ ██▒▓░
+	 ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒▓ ░▒▓░   ░ ▐░  ░░ ▒░ ░  ██▒▒▒
+	 ▒ ░▒░ ░  ▒   ▒▒ ░  ░▒ ░ ▒░   ░ ░░   ░ ░  ░▓██ ░▒░
+	 ░  ░░ ░  ░   ▒     ░░   ░      ░░     ░   ▒ ▒ ░░
+	 ░  ░  ░      ░  ░   ░           ░     ░  ░░ ░
+		                        ░          ░ ░
+                                                ''' + color.ENDC)
+    print color.INFO + "\n Bienvenido a Harvey, servicio de Vigilancia Digital. Seleccione una opcion: \n" + color.ENDC
+    print color.BLUE + "\t1 - " + color.ENDC+"Analizar un Objetivo"
+    print color.BLUE + "\t2 - " + color.ENDC+"Vigilancia Digital en España"
+    print color.BLUE + "\t3 - " + color.ENDC+"Vigilancia Digital con Keyword"
+    print color.BLUE + "\t4 - " + color.ENDC+"Geoposicionamiento Mundial"
+    print color.BLUE + "\t5 - " + color.ENDC+"Geoposicionamiento Nacional"
+    print color.BLUE + "\tq - " + color.ENDC+"Salir\n"
+    eleccion_menu=raw_input(color.BLUE + "[x] " + color.ENDC + color.INFO + "Elija la opción que desee: " + color.ENDC)
     return eleccion_menu
 
 def mostrar_logo():  # LOGO
@@ -61,8 +85,9 @@ def mostrar_logo():  # LOGO
   oh/m/           -yyyyy-   / __/| |/ |/ / / / / / /_/ / /_/ / / /_
   :ydy`              ```   /_/   |__/|__/_/ /_/_/_.___/_.___/_/\__/
   ``/ooo/-`
-      `:yhh.
-       `-:/+-`\033[1;m\n'''
+      `:yhh.		   Copyright (c) 2017 Follow the white rabbit
+	`-:/+-`		   All Rights Reserved
+       	\033[1;m\n'''
 
 ################################################################################################
 #                               PROGRAMA PRINCIPAL                                             #
@@ -76,7 +101,7 @@ while(str(eleccion_menu) is not "q"):
     elif(int(eleccion_menu) == 3):
         streaming_tweets.main()
     elif(int(eleccion_menu) == 4):
-        myMap.main()
+        myMapWorld.main()
     elif(int(eleccion_menu) == 5):
         myMapSpain.main()
 

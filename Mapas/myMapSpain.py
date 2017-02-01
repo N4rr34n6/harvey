@@ -3,7 +3,7 @@
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import tweepy
-import time
+import time, os
 from secrets import consumer_key, consumer_secret, access_token, access_token_secret
 
 lista_coordenadas=[]
@@ -19,6 +19,12 @@ class color:  # COLOR TEXTO
     BOLD = '\033[1m'
     GREEN = '\033[92m'
     UNDERLINE = '\033[4m'
+
+def limpiar_pantalla():  # LIMPIAR PANTALLA
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system('tput reset')
 
 class TwitterStreamListener(tweepy.StreamListener):
     """ A listener handles tweets are the received from the stream.
@@ -59,14 +65,29 @@ class TwitterStreamListener(tweepy.StreamListener):
             lista_coordenadas.append((x,y))
 
 
-if __name__ == '__main__':
+def main():
 
-    print(color.FAIL + "Comenzando streaming de tweets en Mapa de España..." + color.ENDC)
+    limpiar_pantalla()
+    print(color.BOLD + """\t\t\t
+                                                    _       _
+                                                    \ \     / /              (\_/)
+                                                      \ \_/ /                (0.0)
+                                                      ( -.- )               (") (")
+                                                    (,,) . (,,)             (      )
+                                                    (" _)-(_ ")             (,,)(,,)
+
+                                                        Harvey is working on it
+                                                            Please stand by
+                                                            >--------------<
+    """ + color.ENDC)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Comenzando streaming de tweets en España..." + color.ENDC)
+    time.sleep(1)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generando mapa para geoposicionamiento nacional..." + color.ENDC)
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth,retry_count=10, retry_delay=5,retry_errors=5)
 
-    streamListener = TwitterStreamListener(1800)
+    streamListener = TwitterStreamListener(30)
     myStream = tweepy.streaming.Stream(auth, streamListener)
     myStream.filter(locations=[-9.38,36.05,3.35,43.75])
 
@@ -74,7 +95,7 @@ if __name__ == '__main__':
     fig = plt.figure(figsize=(18, 4), dpi=250)
 
     # Set a title
-    plt.title("Mapa de tweets en nuestro pais")
+    plt.title("Geoposicionamiento Nacional")
 
     m = Basemap(projection='merc', lat_0=50, lon_0=-100,
                          resolution = 'h', area_thresh = 5000.0,

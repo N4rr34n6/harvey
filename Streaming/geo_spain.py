@@ -21,8 +21,8 @@ class CustomStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         if(time.time() - self.start_time) < self.limit:
             print(">----------------------------------------------------<")
-            print color.INFO + "Usuario: " + color.ENDC + str(status.user.screen_name)
-            print color.INFO + "Pais: " + color.ENDC + str(status.place.country_code)
+            print color.INFO + "Usuario: " + color.ENDC + color.BLUE + str(status.user.screen_name) + color.ENDC
+            print color.INFO + "Pais: " + color.ENDC + color.BLUE + str(status.place.country_code) + color.ENDC
             if(status.geo is not None):
                 print color.INFO + "Geolocalizacion: " + color.ENDC + str(status.coordinates["coordinates"])
             print status.text
@@ -42,7 +42,19 @@ class CustomStreamListener(tweepy.StreamListener):
 
 def main():
     limpiar_pantalla()
-    print(color.FAIL + "Comenzando streaming de tweets por España..." + color.ENDC)
+    print(color.BOLD + """\t\t\t
+                                                    _       _
+                                                    \ \     / /              (\_/)
+                                                      \ \_/ /                (0.0)
+                                                      ( -.- )               (") (")
+                                                    (,,) . (,,)             (      )
+                                                    (" _)-(_ ")             (,,)(,,)
+
+                                                        Harvey is working on it
+                                                            Please stand by
+                                                            >--------------<
+    """ + color.ENDC)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Comenzando vigilancia digital nivel nacional..." + color.ENDC)
     #Pausa dramatica
     time.sleep(3)
     sapi = tweepy.streaming.Stream(auth, CustomStreamListener(20))
