@@ -329,8 +329,8 @@ def main():
 
     # GRAFICAS
     print("\n\n")
-    print_charts(actividad_horaria, color.BLUE + "[+] "+ color.INFO +"Distribucion de actividad horaria (por horas)"+ color.ENDC)
-    print_charts(actividad_semanal, color.BLUE + "[+] "+ color.INFO +"Distribucion de actividad semanal (por dias)"+ color.ENDC, weekday=True)
+    print_charts(actividad_horaria, color.BLUE + "[+] "+ color.INFO +" Distribucion de actividad horaria (por horas)"+ color.ENDC)
+    print_charts(actividad_semanal, color.BLUE + "[+] "+ color.INFO +" Distribucion de actividad semanal (por dias)"+ color.ENDC, weekday=True)
     print("\n\n")
 
     print color.BLUE + "[+] " + color.ENDC + color.INFO + " Lenguajes detectados" + color.ENDC + " (top 5)"
