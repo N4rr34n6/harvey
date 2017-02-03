@@ -4,7 +4,7 @@
 
 [FWHIBBIT](http://fwhibbit.github.io/) es un grupo formado por una serie de amigos que estudian y trabajan sobre nuevas ideas en el ámbito de la ciberseguridad. Puedes seguir nuestro [blog](https://fwhibbit.es/) para más información.
 
-![logo](imagenes/harvey.jpg)
+![logo](/Imagenes/harvey.jpg)
 
 ## Mejoras
 - [x] Reestructuración del programa.
