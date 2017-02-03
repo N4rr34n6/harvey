@@ -38,15 +38,12 @@ class TwitterStreamListener(tweepy.StreamListener):
 
     def on_status(self, status):
         if(time.time() - self.start_time) < self.limit:
-            """
             print(">----------------------------------------------------<")
             print color.INFO + "Usuario: " + color.ENDC + str(status.user.screen_name)
             if(status.geo is not None):
                 print color.INFO + "Geolocalizacion: " + color.ENDC + str(status.coordinates["coordinates"])
             print status.text
             print(">----------------------------------------------------<\n")
-            time.sleep(1)
-            """
             self.get_tweet(status)
             return True
         else:
@@ -82,12 +79,11 @@ def main():
     """ + color.ENDC)
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Comenzando streaming de tweets en España..." + color.ENDC)
     time.sleep(1)
-    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generando mapa para geoposicionamiento nacional..." + color.ENDC)
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth,retry_count=10, retry_delay=5,retry_errors=5)
 
-    streamListener = TwitterStreamListener(30)
+    streamListener = TwitterStreamListener(1200)
     myStream = tweepy.streaming.Stream(auth, streamListener)
     myStream.filter(locations=[-9.38,36.05,3.35,43.75])
 
@@ -107,6 +103,7 @@ def main():
     #my_map.drawstates()
     m.drawcoastlines(antialiased=False,linewidth=0.005)
 
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generando mapa para geoposicionamiento nacional..." + color.ENDC)
     for i in lista_coordenadas:
         x = i[0]
         y = i[1]

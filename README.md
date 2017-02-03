@@ -4,12 +4,14 @@
 
 [FWHIBBIT](http://fwhibbit.github.io/) es un grupo formado por una serie de amigos que estudian y trabajan sobre nuevas ideas en el ámbito de la ciberseguridad. Puedes seguir nuestro [blog](https://fwhibbit.es/) para más información.
 
+![logo](/imagenes/harvey.jpg)
+
 ## Mejoras
-- [x] Reestructuración del programa
+- [x] Reestructuración del programa.
 - [x] Banner con último tweet. Toda la información siempre disponible al momento.
 - [x] Posibilidad de análisis completo de objetivo.
-- [x] Obtener tweets mediante geolocalización. Interesante para tema de manifestaciones y grandes quedadas.
-- [x] Mapa donde se muestren los tweets que queremos.
+- [x] Obtener tweets mediante geolocalización a nivel nacional y mundial.
+- [x] Mapa nacional y mundial para vigilancia.s
 
 ## Cómo contribuir
 
