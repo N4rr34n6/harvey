@@ -13,6 +13,8 @@
 - [x] Obtener tweets mediante geolocalización a nivel nacional y mundial.
 - [x] Mapa nacional y mundial para vigilancia.s
 
+Más mejoras en camino...
+
 ## Cómo contribuir
 
 Si quereis colaborar desde github tenéis que:
