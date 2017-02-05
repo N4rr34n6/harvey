@@ -8,9 +8,7 @@
 
 ## Menu del programa
 
-1. Analizar un objetivo concreto
-    Basado en el proyecto [tweets_analyzer](https://github.com/x0rz/tweets_analyzer) del usuario de github [x0rz](https://github.com/x0rz).
-
+1. Analizar un objetivo concreto. Basado en el proyecto [tweets_analyzer](https://github.com/x0rz/tweets_analyzer) del usuario de github [x0rz](https://github.com/x0rz).
 2. Vigilancia digital en España utilizando streaming de tweets.
 3. Vigilancia digital mundial basada en palabra clave utilizando streaming de tweets.
 4. Geoposicionamiento a nivel mundial (sin filtro por palabra)
