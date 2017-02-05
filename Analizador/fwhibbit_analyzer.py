@@ -11,7 +11,7 @@ import numpy
 import argparse
 import datetime
 import os
-from secrets import consumer_key, consumer_secret, access_token, access_token_secret
+from Claves.secrets import consumer_key, consumer_secret, access_token, access_token_secret
 
 ################################################################################################
 #                                   COLORES                                                    #

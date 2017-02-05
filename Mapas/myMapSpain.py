@@ -4,7 +4,7 @@ from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import tweepy
 import time, os
-from secrets import consumer_key, consumer_secret, access_token, access_token_secret
+from Claves.secrets import consumer_key, consumer_secret, access_token, access_token_secret
 
 lista_coordenadas=[]
 

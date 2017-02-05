@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys,os,time
 import tweepy
-from Analizador.secrets import consumer_key, consumer_secret, access_token, access_token_secret
+from Claves.secrets import consumer_key, consumer_secret, access_token, access_token_secret
 from Analizador.fwhibbit_analyzer import limpiar_pantalla
 from Analizador.fwhibbit_analyzer import color
 import stream_tweets

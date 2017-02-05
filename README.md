@@ -6,16 +6,30 @@
 
 ![logo](/Imagenes/harvey.jpg)
 
-## Mejoras
+## Menu del programa
+
+1. Analizar un objetivo concreto
+    Basado en el proyecto [tweets_analyzer](https://github.com/x0rz/tweets_analyzer) del usuario de github [x0rz](https://github.com/x0rz).
+
+2. Vigilancia digital en España utilizando streaming de tweets.
+3. Vigilancia digital mundial basada en palabra clave utilizando streaming de tweets.
+4. Geoposicionamiento a nivel mundial (sin filtro por palabra)
+5. Geoposicionamiento a nivel nacional (sin filtro por palabra)
+
+## Done
+
 - [x] Reestructuración del programa.
 - [x] Banner con último tweet. Toda la información siempre disponible al momento.
 - [x] Posibilidad de análisis completo de objetivo.
 - [x] Obtener tweets mediante geolocalización a nivel nacional y mundial.
-- [x] Mapa nacional y mundial para vigilancia.s
-- [ ] Elastic search y kibana
-- [ ] Posibilidad de elegir una serie de objetivos diferentes. Monitorizarlo.
+- [x] Mapa nacional y mundial para vigilancia.
 
-Más mejoras en camino...
+## To do
+
+- [ ] Utilizar la tecnología de Elasticsearch y kibana
+- [ ] Posibilidad de elegir una serie de objetivos diferentes. Monitorizarlos en tiempo real.
+- [ ] Información detallada en PDF.
+- [ ] Ampliación en la red social Instagram.
 
 ## Cómo contribuir
 
