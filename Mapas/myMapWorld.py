@@ -42,6 +42,7 @@ class TwitterStreamListener(tweepy.StreamListener):
                 print color.INFO + "Geolocalizacion: " + color.ENDC + str(status.coordinates["coordinates"])
             print status.text
             print(">----------------------------------------------------<\n")
+            time.sleep(0.5)
             self.get_tweet(status)
             return True
         else:
@@ -81,7 +82,7 @@ def main():
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth,retry_count=10, retry_delay=5,retry_errors=5)
 
-    streamListener = TwitterStreamListener(1200)
+    streamListener = TwitterStreamListener(20)
     myStream = tweepy.streaming.Stream(auth, streamListener)
     myStream.filter(locations=[-180, -90, 180, 90])
 
@@ -97,9 +98,10 @@ def main():
                          urcrnrlon=160, urcrnrlat=70)
 
     # draw elements onto the world map
-    m.drawcountries()
+    #m.drawcountries()
     #my_map.drawstates()
-    m.drawcoastlines(antialiased=False,linewidth=0.005)
+    #m.drawcoastlines(antialiased=False,linewidth=0.005)
+    m.bluemarble(scale=0.3)
 
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generando mapa para geoposicionamiento mundial..." + color.ENDC)
     for i in lista_coordenadas:

@@ -12,6 +12,8 @@
 - [x] Posibilidad de análisis completo de objetivo.
 - [x] Obtener tweets mediante geolocalización a nivel nacional y mundial.
 - [x] Mapa nacional y mundial para vigilancia.s
+- [ ] Elastic search y kibana
+- [ ] Posibilidad de elegir una serie de objetivos diferentes. Monitorizarlo.
 
 Más mejoras en camino...
 

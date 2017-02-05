@@ -318,7 +318,7 @@ def main():
 
     # Obtener ultimos tweets
     num_tweets = numpy.amin([limite_tweets, user_info.statuses_count])
-    print(color.BLUE + "[+] " + color.ENDC + " Obteniendo ultimos" + color.BLUE + str(num_tweets) + color.ENDC +" tweets...")
+    print(color.BLUE + "[+] " + color.ENDC + " Obteniendo ultimos " + color.BLUE + str(num_tweets) + color.ENDC +" tweets...")
 
     # DESCARGA DE TWEETS
     num_tweets = get_tweets(twitter_api, username_target, limit=limite_tweets)

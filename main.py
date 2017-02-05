@@ -85,7 +85,7 @@ def mostrar_logo():  # LOGO
   oh/m/           -yyyyy-   / __/| |/ |/ / / / / / /_/ / /_/ / / /_
   :ydy`              ```   /_/   |__/|__/_/ /_/_/_.___/_.___/_/\__/
   ``/ooo/-`
-      `:yhh.
+      `:yhh.                        Follow the white rabbit
 	`-:/+-`
        	\033[1;m\n'''
 
