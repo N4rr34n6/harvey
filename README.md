@@ -14,20 +14,11 @@
 4. Geoposicionamiento a nivel mundial (sin filtro por palabra)
 5. Geoposicionamiento a nivel nacional (sin filtro por palabra)
 
-## Done
+## Uso del programa
 
-- [x] Reestructuración del programa.
-- [x] Banner con último tweet. Toda la información siempre disponible al momento.
-- [x] Posibilidad de análisis completo de objetivo.
-- [x] Obtener tweets mediante geolocalización a nivel nacional y mundial.
-- [x] Mapa nacional y mundial para vigilancia.
+Basta con lanzar el programa principal utilizando python2.
 
-## To do
-
-- [ ] Utilizar la tecnología de Elasticsearch y kibana
-- [ ] Posibilidad de elegir una serie de objetivos diferentes. Monitorizarlos en tiempo real.
-- [ ] Información detallada en PDF.
-- [ ] Ampliación en la red social Instagram.
+    python2 main.py
 
 ## Cómo contribuir
 
