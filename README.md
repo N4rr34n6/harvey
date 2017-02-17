@@ -22,7 +22,6 @@ Basta con lanzar el programa principal utilizando python2.
 
 ## Ejemplos gráficos
 
-![mapa1](imagenes/Mundial2017-02-03 08-08-03.PNG)
 ![mapa1](imagenes/Mundial2017-02-03 11-11-33.PNG)
 ![mapa1](imagenes/Nacional2017-02-03 08-08-03.PNG)
 
