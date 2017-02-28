@@ -25,13 +25,6 @@ Basta con lanzar el programa principal utilizando python2.
 ![mapa1](imagenes/Mundial2017-02-03 11-11-33.PNG)
 ![mapa1](imagenes/Nacional2017-02-03 08-08-03.PNG)
 
-## En camino...
-
-  - [ ] Utilizar la tecnología de Elasticsearch y Kibana
-  - [ ] Posibilidad de elegir una serie de objetivos diferentes. Monitorizarlos en tiempo real.
-  - [ ] Información detallada en PDF.
-  - [ ] Ampliación a otras redes sociales
-
 ## Cómo contribuir
 
 Si quereis colaborar desde github tenéis que:
