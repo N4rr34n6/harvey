@@ -14,6 +14,12 @@
 4. Geoposicionamiento a nivel mundial (sin filtro por palabra)
 5. Geoposicionamiento a nivel nacional (sin filtro por palabra)
 
+## Instalación repositorios (Debian)
+apt-get install python-pìp 
+pip install -r requirements.txt
+
+apt-get install python-mpltoolkits.basema
+
 ## Uso del programa
 
 Basta con lanzar el programa principal utilizando python2.
