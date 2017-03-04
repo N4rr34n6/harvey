@@ -15,13 +15,13 @@
 5. Geoposicionamiento a nivel nacional (sin filtro por palabra)
 
 ## Instalación repositorios (Debian)
-apt-get install python-pìp git python-mpltoolkits.basema
+    apt-get install python-pip git python-mpltoolkits.basema
 
-git clone https://github.com/juanvelascogomez/harvey.git
+    git clone https://github.com/juanvelascogomez/harvey.git
 
-cd harvey/
+    cd harvey/
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 ## Uso del programa
 
