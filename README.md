@@ -6,7 +6,7 @@
 
 ## Cambios previstos (Sin fecha determinada)
 
-
+[![trello](imagenes/trello.png)](https://trello.com/b/hMGo518O)
 
 
 ## [FWHIBBIT](http://fwhibbit.github.io/) - [Blog](https://fwhibbit.es/)
@@ -41,7 +41,8 @@ Basta con lanzar el programa principal utilizando python2.
 ## Ejemplos gráficos
 
 ![mapa1](imagenes/Mundial2017-02-03 11-11-33.PNG)
-![mapa1](imagenes/Nacional2017-02-03 08-08-03.PNG)
+
+![mapa2](imagenes/Nacional2017-02-03 08-08-03.PNG)
 
 ## Cómo contribuir
 
@@ -52,7 +53,7 @@ Si quereis colaborar desde github tenéis que:
   - Modificar lo que querais
   - Subirlo a vuestra cuenta (git push normal)
   - Desde github.com teneis que ir al repositorio vuestro y darle al botón "New pull request"
-  - Y esperar a que desde la cuenta **fwhibbit** de github se acepten los cambios.
+  - Y esperar a que desde esta cuenta de github se acepten los cambios.
 
 ## Copyright and License
 

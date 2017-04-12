@@ -41,14 +41,11 @@ def salir():
     """ + color.ENDC)
     time.sleep(2)
     fwhibbit_analyzer.limpiar_pantalla()
-    mostrar_logo()
     print "\n\tContacto:"
-    print color.INFO + "\tEmail: " + color.ENDC + "info@fwhibbit.es"
-    print color.INFO + "\tWeb: " + color.ENDC + "httpss://www.fwhibbit.es/"
-    print color.INFO + "\tTwitter: " + color.ENDC + "@fwhibbit_blog\n"
+    print color.INFO + "\tEmail: " + color.ENDC + "juanvelasco@protonmail.com"
+    print color.INFO + "\tTwitter: " + color.ENDC + "@juanvelalsc0\n"
 
 def mostrar_menu_principal():
-    mostrar_logo()
     print(color.INFO + '''\t\t\t
 	 ██░ ██  ▄▄▄       ██▀███   ██▒   █▓▓█████▓██   ██▓
 	▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓██░   █▒▓█   ▀ ▒██  ██▒
@@ -70,24 +67,6 @@ def mostrar_menu_principal():
     print color.BLUE + "\tq - " + color.ENDC+"Salir\n"
     eleccion_menu=raw_input(color.BLUE + "[x] " + color.ENDC + color.INFO + "Elija la opción que desee: " + color.ENDC)
     return eleccion_menu
-
-def mostrar_logo():  # LOGO
-    fwhibbit_analyzer.limpiar_pantalla()
-    print '''\033[1;32m\t
-
-        `.--:++/.
-      `.-::::/ymm+
-    ```.`.-shmdd/      `
-  .//-/++yhmmdy-     `//`
- :y:odNMNNmmmh/   .:smm.       ____         __    _ __    __    _ __
- ooydNNNy:..`    osNMMm:`     / __/      __/ /_  (_) /_  / /_  (_) /_
- `hdsMN+         .hNMmho-    / /_| | /| / / __ \/ / __ \/ __ \/ / __/
-  oh/m/           -yyyyy-   / __/| |/ |/ / / / / / /_/ / /_/ / / /_
-  :ydy`              ```   /_/   |__/|__/_/ /_/_/_.___/_.___/_/\__/
-  ``/ooo/-`
-      `:yhh.                        Follow the white rabbit
-	`-:/+-`
-       	\033[1;m\n'''
 
 ################################################################################################
 #                               PROGRAMA PRINCIPAL                                             #

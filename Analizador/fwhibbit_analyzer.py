@@ -13,9 +13,9 @@ import datetime
 import os
 from Claves.secrets import consumer_key, consumer_secret, access_token, access_token_secret
 
-################################################################################################
-#                                   COLORES                                                    #
-################################################################################################
+# ------------------------------
+# Colores
+# ------------------------------
 class color:  # COLOR TEXTO
     FAIL = '\033[91m'
     BLUE = '\033[94m'
@@ -25,20 +25,9 @@ class color:  # COLOR TEXTO
     GREEN = '\033[92m'
     UNDERLINE = '\033[4m'
 
-################################################################################################
-#                       ARGUMENTOS PARA EL HELP DEL PROGRAMA                                   #
-################################################################################################
-"""
-parser = argparse.ArgumentParser(description='Analizar la actividad de una cuenta de twitter.')
-parser.add_argument('-l', '--limite', metavar='N', type=int, default=1000, help='limite de tweets para analizar (defecto=1000)')
-parser.add_argument('-f', '--filtro', help='filtro por fuente (ex. -f android analizara solo los tweets de android)')
-parser.add_argument('--no-timezone',  action='store_true',help='removes the timezone auto-adjustment (default is UTC)')
-parser.add_argument('--utc-offset',  type=int,help='aplicar una zona horaria especifica (en segundos)')
-args = parser.parse_args()
-"""
-################################################################################################
-#                                   VARIABLES GLOBALES                                         #
-################################################################################################
+# ------------------------------
+# Variables globales
+# ------------------------------
 fecha_inicio = 0
 fecha_final = 0
 
@@ -91,9 +80,9 @@ usuarios_mencionados = {}
 id_screen_names = {}
 limite_tweets = 500
 
-################################################################################################
-#                                   PROCESAR TWEEET                                            #
-################################################################################################
+# ------------------------------
+# Procesar tweet
+# ------------------------------
 def process_tweet(tweet):
     """ Procesar un unico tweet y actualizar la base de datos """
     global actividad_horaria
@@ -109,11 +98,6 @@ def process_tweet(tweet):
     global retweets
     global retweeted_names
     global usuarios_mencionados
-
-    # Check for filtros before processing any further
-    #if args.filtro and tweet.source:
-        #if not args.filtro.lower() in tweet.source.lower():
-            #return
 
     tw_date = tweet.created_at
 
@@ -296,10 +280,10 @@ def main():
     #Pausa dramatica
     time.sleep(3)
 
-    print(color.BLUE + "\n############################################################################################################################################" + color.ENDC)
+    print(color.BLUE + "\n# ----------------------------------------------------------------------------------------------------------------------------------------" + color.ENDC)
     print(color.INFO + "\t\t\t\t >>> Ultimo tweet de " + str(username_target) + " <<<" + color.ENDC)
     get_last_tweet(twitter_api, username_target)
-    print(color.BLUE + "############################################################################################################################################\n" + color.ENDC)
+    print(color.BLUE + "# ----------------------------------------------------------------------------------------------------------------------------------------\n" + color.ENDC)
 
     # Getting data on account
     print(color.BLUE + "[+] " + color.ENDC +" Obteniendo informacion sobre " + color.BLUE + "@" + str(username_target) + color.ENDC)
