@@ -18,6 +18,15 @@
 4. Geoposicionamiento a nivel mundial (sin filtro por palabra)
 5. Geoposicionamiento a nivel nacional (sin filtro por palabra)
 
+## Instalación repositorios (Debian)
+    apt-get install python-pip git python-mpltoolkits.basema
+
+    git clone https://github.com/juanvelascogomez/harvey.git
+
+    cd harvey/
+
+    pip install -r requirements.txt
+
 ## Uso del programa
 
 Basta con lanzar el programa principal utilizando python2.
