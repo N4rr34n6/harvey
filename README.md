@@ -1,6 +1,6 @@
 # [HARVEY](https://juanvelascogomez.github.io/harvey/)
 
-## Cambios previstos (Sin fecha determinada)
+## Cambios previstos (Sin fecha estimada)
 
 [![trello](imagenes/trello.png)](https://trello.com/b/hMGo518O)
 
