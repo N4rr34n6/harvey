@@ -4,6 +4,11 @@
 
 ![STANDBY](imagenes/standby.jpg)
 
+## Cambios previstos (Sin fecha determinada)
+
+
+
+
 ## [FWHIBBIT](http://fwhibbit.github.io/) - [Blog](https://fwhibbit.es/)
 
 [FWHIBBIT](http://fwhibbit.github.io/) es un grupo formado por una serie de amigos que estudian y trabajan sobre nuevas ideas en el ámbito de la ciberseguridad. Puedes seguir nuestro [blog](https://fwhibbit.es/) para más información.
