@@ -1,9 +1,5 @@
 # [HARVEY](https://juanvelascogomez.github.io/harvey/)
 
-## WE ARE WORKING IN NEW FEATURES.
-
-![STANDBY](imagenes/standby.jpg)
-
 ## Cambios previstos (Sin fecha determinada)
 
 [![trello](imagenes/trello.png)](https://trello.com/b/hMGo518O)
