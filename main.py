@@ -26,39 +26,38 @@ class color:  # COLOR TEXTO
 ################################################################################################
 def salir():
     fwhibbit_analyzer.limpiar_pantalla()
-    print(color.BOLD + """\t\t\t
-                                                    _       _
-                                                    \ \     / /              (\_/)
-                                                      \ \_/ /                (0.0)
-                                                      ( -.- )               (") (")
-                                                    (,,) . (,,)             (      )
-                                                    (" _)-(_ ")             (,,)(,,)
-
-                                                            Have a nice day
-                                                    Please don't stop talking to Harvey
-                                                          Only you can see him
-                                                            >--------------<
+    print(color.INFO + """\t\t\t
+       _     _
+       \`\ /`/
+        \ V /        Harvey - The invisible rabbit
+        /. .\        v1.0 alpha
+       =\ T /=
+        / ^ \        Autor: @juanvelasc0
+       /\   /\       Follow the white rabbit (@fwhibbit_blog)
+     __\ " " /__
+    (____/^\____)
     """ + color.ENDC)
-    time.sleep(2)
-    fwhibbit_analyzer.limpiar_pantalla()
-    print "\n\tContacto:"
-    print color.INFO + "\tEmail: " + color.ENDC + "juanvelasco@protonmail.com"
-    print color.INFO + "\tTwitter: " + color.ENDC + "@juanvelalsc0\n"
+
+    time.sleep(1)
+    print(color.BOLD + """\t\t\t
+    Have a nice day! Please don't stop talking to Harvey. Only you can see him
+    """ + color.ENDC)
 
 def mostrar_menu_principal():
-    print(color.INFO + '''\t\t\t
-	 ██░ ██  ▄▄▄       ██▀███   ██▒   █▓▓█████▓██   ██▓
-	▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓██░   █▒▓█   ▀ ▒██  ██▒
-	▒██▀▀██░▒██  ▀█▄  ▓██ ░▄█ ▒ ▓██  █▒░▒███    ▒██ ██░
-	░▓█ ░██ ░██▄▄▄▄██ ▒██▀▀█▄    ▒██ █░░▒▓█  ▄  ░ ▐██▓░
-	░▓█▒░██▓ ▓█   ▓██▒░██▓ ▒██▒   ▒▀█░  ░▒████▒ ░ ██▒▓░
-	 ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒▓ ░▒▓░   ░ ▐░  ░░ ▒░ ░  ██▒▒▒
-	 ▒ ░▒░ ░  ▒   ▒▒ ░  ░▒ ░ ▒░   ░ ░░   ░ ░  ░▓██ ░▒░
-	 ░  ░░ ░  ░   ▒     ░░   ░      ░░     ░   ▒ ▒ ░░
-	 ░  ░  ░      ░  ░   ░           ░     ░  ░░ ░
-		                        ░          ░ ░
-                                                ''' + color.ENDC)
-    print color.INFO + "\n Bienvenido a Harvey, servicio de Vigilancia Digital. Seleccione una opcion: \n" + color.ENDC
+    print (color.INFO + '''\t\t\t
+       _     _
+       \`\ /`/
+        \ V /        Harvey - The invisible rabbit
+        /. .\        v1.0 alpha
+       =\ T /=
+        / ^ \        Autor: @juanvelasc0
+       /\   /\       Follow the white rabbit (@fwhibbit_blog)
+     __\ " " /__
+    (____/^\____)
+
+''' + color.ENDC)
+
+    print color.BLUE + "[/] " + color.INFO + "Bienvenido a Harvey, servicio de Vigilancia Digital. \n" + color.ENDC
     print color.BLUE + "\t1 - " + color.ENDC+"Analizar un Objetivo"
     print color.BLUE + "\t2 - " + color.ENDC+"Vigilancia Digital en España"
     print color.BLUE + "\t3 - " + color.ENDC+"Vigilancia Digital con Keyword"
