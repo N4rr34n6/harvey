@@ -2,28 +2,12 @@
 # -*- coding: utf-8 -*-
 from ascii_graph import Pyasciigraph
 from ascii_graph.colors import *
-from ascii_graph.colordata import vcolor
-from ascii_graph.colordata import hcolor
+from ascii_graph.colordata import vcolor, hcolor
 from tqdm import tqdm
-import tweepy
-import time
-import numpy
-import argparse
-import datetime
-import os
-from Claves.secrets import consumer_key, consumer_secret, access_token, access_token_secret
-
-# ------------------------------
-# Colores
-# ------------------------------
-class color:  # COLOR TEXTO
-    FAIL = '\033[91m'
-    BLUE = '\033[94m'
-    INFO = '\033[93m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    GREEN = '\033[92m'
-    UNDERLINE = '\033[4m'
+import tweepy, time, numpy, argparse, datetime, os
+from Secrets.secrets import consumer_key, consumer_secret, access_token, access_token_secret
+from Options.options import color as color
+from Options.options import clear_window
 
 # ------------------------------
 # Variables globales
@@ -249,12 +233,6 @@ def print_charts(dataset, title, weekday=False):
         print(line)
     print("")
 
-def limpiar_pantalla():  # LIMPIAR PANTALLA
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        os.system('tput reset')
-
 def main():
 
     username_target = raw_input(color.BLUE + "[x] " + color.ENDC + color.INFO + "Introduzca el alias de twitter del objetivo:" + color.ENDC)
@@ -263,19 +241,7 @@ def main():
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth)
 
-    limpiar_pantalla()
-    print(color.BOLD + """\t\t\t
-                                                    _       _
-                                                    \ \     / /              (\_/)
-                                                      \ \_/ /                (0.0)
-                                                      ( -.- )               (") (")
-                                                    (,,) . (,,)             (      )
-                                                    (" _)-(_ ")             (,,)(,,)
-
-                                                        Harvey is working on it
-                                                            Please stand by
-                                                            >--------------<
-    """ + color.ENDC)
+    clear_window()
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Comenzando el análisis de objetivo..." + color.ENDC)
     #Pausa dramatica
     time.sleep(3)

@@ -1,11 +1,9 @@
 #!/usr/bin/python -tt
 # -*- coding: utf-8 -*-
-import sys,os,time
-import tweepy
-from Claves.secrets import consumer_key, consumer_secret, access_token, access_token_secret
-from Analizador.fwhibbit_analyzer import limpiar_pantalla
-from Analizador.fwhibbit_analyzer import color
-import stream_tweets
+import sys,os,time,tweepy,stream_tweets
+from Secrets.secrets import consumer_key, consumer_secret, access_token, access_token_secret
+from Options.options import color as color
+from Options.options import clear_window
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -42,18 +40,6 @@ class CustomStreamListener(tweepy.StreamListener):
 
 def main():
     limpiar_pantalla()
-    print(color.BOLD + """\t\t\t
-                                                    _       _
-                                                    \ \     / /              (\_/)
-                                                      \ \_/ /                (0.0)
-                                                      ( -.- )               (") (")
-                                                    (,,) . (,,)             (      )
-                                                    (" _)-(_ ")             (,,)(,,)
-
-                                                        Harvey is working on it
-                                                            Please stand by
-                                                            >--------------<
-    """ + color.ENDC)
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Comenzando vigilancia digital nivel nacional..." + color.ENDC)
     #Pausa dramatica
     time.sleep(3)
