@@ -2,14 +2,14 @@
 
 ## Cambios previstos (Sin fecha estimada)
 
-[![trello](imagenes/trello.png)](https://trello.com/b/hMGo518O)
+[![trello](Images/trello.png)](https://trello.com/b/hMGo518O)
 
 
 ## [FWHIBBIT](http://fwhibbit.github.io/) - [Blog](https://fwhibbit.es/)
 
 [FWHIBBIT](http://fwhibbit.github.io/) es un grupo formado por una serie de amigos que estudian y trabajan sobre nuevas ideas en el ámbito de la ciberseguridad. Puedes seguir nuestro [blog](https://fwhibbit.es/) para más información.
 
-![logo](imagenes/Harvey.JPG)
+![logo](Images/Harvey.JPG)
 
 ## Menu del programa
 
@@ -36,9 +36,9 @@ Basta con lanzar el programa principal utilizando python2.
 
 ## Ejemplos gráficos
 
-![mapa1](imagenes/mundial2.PNG)
+![mapa1](Images/mundial2.PNG)
 
-![mapa2](imagenes/nacional2.PNG)
+![mapa2](Images/nacional2.PNG)
 
 ## Cómo contribuir
 
