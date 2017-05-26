@@ -63,6 +63,7 @@ usuarios_retweeteados = {}
 usuarios_mencionados = {}
 id_screen_names = {}
 limite_tweets = 500
+usuario = ""
 
 # ------------------------------
 # Procesar tweet
@@ -165,7 +166,7 @@ def get_tweets(api, username, limit):
 
 def get_last_tweet(api,username):
     tweet = api.user_timeline(username, count = 1)[0]
-    print(tweet.text)
+    return tweet.text
 
 def int_to_weekday(day):
     if day == "0":
@@ -233,9 +234,13 @@ def print_charts(dataset, title, weekday=False):
         print(line)
     print("")
 
+def get_user():
+    username_target = raw_input(color.BLUE + "[x] " + color.ENDC + color.INFO + "Introduzca el alias de twitter del objetivo:" + color.ENDC)
+    return username_target
+
 def main():
 
-    username_target = raw_input(color.BLUE + "[x] " + color.ENDC + color.INFO + "Introduzca el alias de twitter del objetivo:" + color.ENDC)
+    username_target = get_user()
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
@@ -249,7 +254,7 @@ def main():
 
     print(color.BLUE + "\n# ----------------------------------------------------------------------------------------------------------------------------------------" + color.ENDC)
     print(color.INFO + "\t\t\t\t >>> Ultimo tweet de " + str(username_target) + " <<<" + color.ENDC)
-    get_last_tweet(twitter_api, username_target)
+    print(get_last_tweet(twitter_api, username_target))
     print(color.BLUE + "# ----------------------------------------------------------------------------------------------------------------------------------------\n" + color.ENDC)
 
     # Getting data on account

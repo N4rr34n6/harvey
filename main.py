@@ -4,7 +4,6 @@ import os
 import time
 import Analyzer.target_analyzer as target_analyzer
 import Streaming.stream_tweets as streaming_tweets
-import Streaming.geo_spain as geo_spain
 import Maps.myMapWorld as myMapWorld
 from Options.options import color as color
 from Options.options import clear_window
@@ -45,6 +44,7 @@ def show_menu():
     print color.BLUE + "\t3 - " + color.ENDC+"Digital vigilance using keyword"
     print color.BLUE + "\t4 - " + color.ENDC+"Worldwide Geo-positioning"
     print color.BLUE + "\t5 - " + color.ENDC+"National Geo-positioning"
+    print color.BLUE + "\t6 - " + color.ENDC+"Webpage Analyze target (under construction)"
     print color.BLUE + "\tq - " + color.ENDC+"Quit\n"
     option_choosed=raw_input(color.BLUE + "[x] " + color.ENDC + color.INFO + "Choose an option: " + color.ENDC)
     return option_choosed
@@ -68,6 +68,8 @@ def main():
             myMapWorld.StreamingMap(world_coords)
         elif(int(option_choosed) == 5):
             myMapWorld.StreamingMap(spain_coords)
+        elif(int(option_choosed) == 6):
+            execfile('run.py')
 
         raw_input(color.FAIL+"Press any key to return to menu..."+color.ENDC)
         option_choosed = show_menu()
