@@ -1,6 +1,7 @@
 #!/usr/bin/python -tt
 # -*- coding: utf-8 -*-
-import os,time
+import os
+import time
 import Analyzer.target_analyzer as target_analyzer
 import Streaming.stream_tweets as streaming_tweets
 import Streaming.geo_spain as geo_spain
@@ -11,9 +12,10 @@ from Options.options import clear_window
 
 option_choosed = 0
 
+
 def info_harvey():
     """Gives general info about Harvey"""
-    print (color.INFO + '''\t\t\t
+    print(color.INFO + '''\t\t\t
        _     _
        \`\ /`/
         \ V /        Harvey - The invisible rabbit
@@ -26,6 +28,7 @@ def info_harvey():
 
 ''' + color.ENDC)
 
+
 def quit():
     """Quitting Harvey..."""
     clear_window()
@@ -33,10 +36,11 @@ def quit():
     time.sleep(1)
     print(color.BOLD + """\t\t\tHave a nice day! Please don't stop talking to Harvey. Only you can see him""" + color.ENDC)
 
+
 def show_menu():
     """Menu options for Harvey"""
     info_harvey()
-    print color.BLUE + "[/] " + color.INFO + "Welcome to Harvey, digital vigilance. \n" + color.ENDC
+    print color.BLUE + "[/] " + color.INFO +"Welcome to Harvey, digital vigilance. \n" + color.ENDC
     print color.BLUE + "\t1 - " + color.ENDC+"Analyze target."
     print color.BLUE + "\t2 - " + color.ENDC+"Digital vigilance in Spain"
     print color.BLUE + "\t3 - " + color.ENDC+"Digital vigilance using keyword"

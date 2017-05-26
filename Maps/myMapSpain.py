@@ -1,7 +1,6 @@
-#!/usr/bin/python -tt
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mpl_toolkits.basemap import Basemap
-import matplotlib.pyplot as plt
+from Maps import maps
 import time, os, tweepy
 from Secrets.secrets import consumer_key, consumer_secret, access_token, access_token_secret
 from Options.options import color as color
@@ -58,33 +57,16 @@ def main():
     myStream = tweepy.streaming.Stream(auth, streamListener)
     myStream.filter(locations=[-9.38,36.05,3.35,43.75])
 
-    # Size of the map
-    fig = plt.figure(figsize=(18, 4), dpi=250)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generando mapa para geoposicionamiento mundial..." + color.ENDC)
 
-    # Set a title
-    plt.title("Geoposicionamiento Nacional")
+    outfile = open('Maps/coordenadas.txt', 'w') # Indicamos el valor 'w'.
+    outfile.write('LAT,LON\n')
 
-    m = Basemap(projection='merc', lat_0=50, lon_0=-100,
-                         resolution = 'h', area_thresh = 5000.0,
-                         llcrnrlon=-9.38, llcrnrlat=36.05,
-                         urcrnrlon=3.35, urcrnrlat=43.75)
-
-    # draw elements onto the world map
-    #m.drawcountries()
-    #my_map.drawstates()
-    #m.drawcoastlines(antialiased=False,linewidth=0.005)
-    m.shadedrelief(scale=0.5)
-    #m.bluemarble(scale=0.3)
-
-    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generando mapa para geoposicionamiento nacional..." + color.ENDC)
     for i in lista_coordenadas:
         x = i[0]
         y = i[1]
-        # convert to map projection coords.
-        # Note that lon,lat can be scalars, lists or numpy arrays.
-        xpt,ypt = m(x,y)
-        # convert back to lat/lon
-        lonpt, latpt = m(xpt,ypt,inverse=True)
-        m.plot(xpt,ypt, 'ro', markersize=6, alpha=0.5)
+        outfile.write(str(x)+",")
+        outfile.write(str(y)+"\n")
 
-    plt.show()
+    outfile.close()
+    maps.mapaLeaflet()

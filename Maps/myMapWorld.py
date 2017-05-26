@@ -1,11 +1,13 @@
-from mpl_toolkits.basemap import Basemap
-import matplotlib.pyplot as plt
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import time, os, tweepy
 from Secrets.secrets import consumer_key, consumer_secret, access_token, access_token_secret
 from Options.options import color as color
 from Options.options import clear_window
+from Maps import maps
 
 lista_coordenadas=[]
+lista_usuarios=[]
 
 class TwitterStreamListener(tweepy.StreamListener):
     """ A listener handles tweets are the received from the stream.
@@ -22,6 +24,7 @@ class TwitterStreamListener(tweepy.StreamListener):
             print(">----------------------------------------------------<")
             print color.INFO + "Usuario: " + color.ENDC + str(status.user.screen_name)
             if(status.geo is not None):
+                lista_usuarios.append(status.user.screen_name)
                 print color.INFO + "Geolocalizacion: " + color.ENDC + str(status.coordinates["coordinates"])
             print status.text
             print(">----------------------------------------------------<\n")
@@ -52,36 +55,20 @@ def main():
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth,retry_count=10, retry_delay=5,retry_errors=5)
 
-    streamListener = TwitterStreamListener(400)
+    streamListener = TwitterStreamListener(30)
     myStream = tweepy.streaming.Stream(auth, streamListener)
     myStream.filter(locations=[-180, -90, 180, 90])
 
-    # Size of the map
-    fig = plt.figure(figsize=(18, 4), dpi=250)
-
-    # Set a title
-    plt.title("Geoposicionamiento Mundial")
-
-    m = Basemap(projection='merc', lat_0=50, lon_0=-100,
-                         resolution = 'h', area_thresh = 5000.0,
-                         llcrnrlon=-140, llcrnrlat=-55,
-                         urcrnrlon=160, urcrnrlat=70)
-
-    # draw elements onto the world map
-    #m.drawcountries()
-    #my_map.drawstates()
-    #m.drawcoastlines(antialiased=False,linewidth=0.005)
-    m.bluemarble(scale=0.3)
-
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generando mapa para geoposicionamiento mundial..." + color.ENDC)
+
+    outfile = open('Maps/coordenadas.txt', 'w') # Indicamos el valor 'w'.
+    outfile.write('LAT,LON\n')
+
     for i in lista_coordenadas:
         x = i[0]
         y = i[1]
-        # convert to map projection coords.
-        # Note that lon,lat can be scalars, lists or numpy arrays.
-        xpt,ypt = m(x,y)
-        # convert back to lat/lon
-        lonpt, latpt = m(xpt,ypt,inverse=True)
-        m.plot(xpt,ypt, 'ro', markersize=3, alpha=0.5)
+        outfile.write(str(x)+",")
+        outfile.write(str(y)+"\n")
 
-    plt.show()
+    outfile.close()
+    maps.mapaLeaflet()
