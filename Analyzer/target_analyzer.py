@@ -239,7 +239,8 @@ def main():
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-    twitter_api = tweepy.API(auth)
+    twitter_api = tweepy.API(auth, wait_on_rate_limit_notify=True,
+        wait_on_rate_limit=True)
 
     clear_window()
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Comenzando el análisis de objetivo..." + color.ENDC)

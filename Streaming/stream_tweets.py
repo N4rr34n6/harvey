@@ -7,7 +7,7 @@ from Options.options import clear_window
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
-twitter_api = tweepy.API(auth)
+twitter_api = tweepy.API(auth, wait_on_rate_limit_notify=True,wait_on_rate_limit=True)
 
 class CustomStreamListener(tweepy.StreamListener):
 
@@ -19,9 +19,9 @@ class CustomStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         if(time.time() - self.start_time) < self.limit:
             print(">----------------------------------------------------<")
-            print color.INFO + "Usuario: " + color.ENDC + color.BLUE + str(status.user.screen_name) + color.ENDC
+            print color.INFO + "User: " + color.ENDC + color.BLUE + str(status.user.screen_name) + color.ENDC
             if(status.geo is not None):
-                print color.INFO + "Geolocalizacion: " + color.ENDC + str(status.coordinates["coordinates"])
+                print color.INFO + "Geo-positioning: " + color.ENDC + str(status.coordinates["coordinates"])
             print status.text
             print(">----------------------------------------------------<\n")
             time.sleep(1)
@@ -37,13 +37,12 @@ class CustomStreamListener(tweepy.StreamListener):
         print >> sys.stderr, 'Timeout...'
         return True # Don't kill the stream
 
-def main():
+def launchStream(languages_choosen = None, locations_choosen = None, track_choosen = None):
     clear_window()
-    list_key_word=raw_input(color.GREEN + "[+] " + color.ENDC + color.INFO +  "Especifique alguna palabra/s para el filtro (separadas por comas): " + color.ENDC).split(", ")
     time.sleep(1)
-    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Comenzando vigilancia digital a nivel mundial por keyword..." + color.ENDC)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Starting digital vigilance..." + color.ENDC)
     print("\n")
     #Pausa dramatica
     time.sleep(3)
     sapi = tweepy.streaming.Stream(auth, CustomStreamListener(20))
-    sapi.filter(track=list_key_word)
+    sapi.filter(languages = languages_choosen, locations = locations_choosen, track = track_choosen)

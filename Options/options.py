@@ -21,3 +21,10 @@ def clear_window():
         os.system("cls")
     else:
         os.system('tput reset')
+
+#--------------------------------------------------------------------------------------------
+#                            Delete content from file                                       #
+#--------------------------------------------------------------------------------------------
+def deleteContent(pfile):
+    pfile.seek(0)
+    pfile.truncate()
