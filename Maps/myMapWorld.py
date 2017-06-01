@@ -57,7 +57,7 @@ def StreamingMap(coords):
     twitter_api = tweepy.API(auth, wait_on_rate_limit_notify=True,
         wait_on_rate_limit=True, retry_count=10, retry_delay=5,retry_errors=5)
 
-    streamListener = TwitterStreamListener(300)
+    streamListener = TwitterStreamListener(60)
     myStream = tweepy.streaming.Stream(auth, streamListener)
     myStream.filter(locations=coords)
 
