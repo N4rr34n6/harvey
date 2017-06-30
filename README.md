@@ -1,5 +1,4 @@
 # [HARVEY](https://juanvelascogomez.github.io/harvey/)
----
 
 ## Cambios previstos (Sin fecha estimada)
 
