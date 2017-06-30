@@ -15,8 +15,9 @@
 ## Menu del programa
 
 1. Analizar un objetivo concreto. Basado en el proyecto [tweets_analyzer](https://github.com/x0rz/tweets_analyzer) del usuario de github [x0rz](https://github.com/x0rz).
+2. Analizar un objetivo concreto (vía web). En construcción.
 2. Vigilancia digital a nivel nacional y mundial. Incluido filtro por palabra.
-3. Geoposicionamiento a nivel nacional y mundial
+3. Geoposicionamiento a nivel nacional y mundial.
 
 ## Instalación repositorios (Debian)
 
@@ -35,6 +36,13 @@ Basta con lanzar el programa principal utilizando python2.
 ## Ejemplos gráficos
 
 ![mapa1](Images/leafletmap.png)
+
+## Versión actual v1.2
+Cambios realizados:
+
+- Visualización de un objetivo vía web. 
+- Unificación del geoposicionamiento nacional y mundial.
+- Mapas realizados utilizando Leaflet. Generación de mapa en formato HTML.
 
 ## Cómo contribuir
 
