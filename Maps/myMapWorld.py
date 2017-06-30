@@ -50,18 +50,20 @@ class TwitterStreamListener(tweepy.StreamListener):
 
 def StreamingMap(coords):
     clear_window()
-    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Starting tweet streaming..." + color.ENDC)
+    time_streaming = 20
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Starting tweet streaming for " + str(time_streaming) + " seconds..." + color.ENDC)
     time.sleep(1)
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth, wait_on_rate_limit_notify=True,
         wait_on_rate_limit=True, retry_count=10, retry_delay=5,retry_errors=5)
 
-    streamListener = TwitterStreamListener(60)
+    streamListener = TwitterStreamListener(time_streaming)
     myStream = tweepy.streaming.Stream(auth, streamListener)
     myStream.filter(locations=coords)
 
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generating map..." + color.ENDC)
+    print(color.BLUE + "[+] " + color.ENDC + color.INFO + "You will find it in Maps/MapsHTML..." + color.ENDC)
 
     outfile = open('Maps/coordenadas.txt', 'w') # Write file
     deleteContent(outfile) # Delete everything inside

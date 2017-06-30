@@ -13,18 +13,12 @@
 ![logo](Images/Harvey.JPG)
 
 ## Menu del programa
----
 
 1. Analizar un objetivo concreto. Basado en el proyecto [tweets_analyzer](https://github.com/x0rz/tweets_analyzer) del usuario de github [x0rz](https://github.com/x0rz).
 2. Vigilancia digital a nivel nacional y mundial. Incluido filtro por palabra.
 3. Geoposicionamiento a nivel nacional y mundial
 
-### Twitter friends
-
-Harvey permite la interacción con el programa [Twitter Friends ](https://github.com/mgmacias95/TwitterFriends) de [mgmacias15](https://github.com/mgmacias95) y de [BraulioV](https://github.com/BraulioV), estudiantes de la Universidad de Granada.
-
 ## Instalación repositorios (Debian)
----
 
     git clone https://github.com/juanvelascogomez/harvey.git
 
@@ -40,9 +34,7 @@ Basta con lanzar el programa principal utilizando python2.
 
 ## Ejemplos gráficos
 
-![mapa1](Images/mundial2.PNG)
-
-![mapa2](Images/nacional2.PNG)
+![mapa1](Images/leafletmap.png)
 
 ## Cómo contribuir
 
