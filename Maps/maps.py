@@ -2,8 +2,6 @@ import folium
 import pandas
 import datetime
 
-# http://pythonhow.com/web-mapping-with-python-and-folium/
-
 def mapaLeaflet():
     df=pandas.read_csv("Maps/coordenadas.txt")
     map=folium.Map(location=[df['LAT'].mean(),df['LON'].mean()],zoom_start=6,tiles='Mapbox bright')

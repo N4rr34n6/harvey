@@ -39,7 +39,7 @@ Basta con lanzar el programa principal utilizando python2.
 ## Versión actual v1.2
 Cambios realizados:
 
-- Visualización de un objetivo vía web. 
+- Visualización de un objetivo vía web.
 - Unificación del geoposicionamiento nacional y mundial.
 - Mapas realizados utilizando Leaflet. Generación de mapa en formato HTML.
 

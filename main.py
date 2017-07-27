@@ -17,7 +17,7 @@ def info_harvey():
        _     _
        \`\ /`/
         \ V /        Harvey - The invisible rabbit
-        /. .\        v1.0 alpha
+        /. .\        v1.2 alpha
        =\ T /=
         / ^ \        Author: @juanvelasc0
        /\   /\       Follow the white rabbit (@fwhibbit_blog)
