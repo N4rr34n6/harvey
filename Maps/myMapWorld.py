@@ -50,17 +50,17 @@ class TwitterStreamListener(tweepy.StreamListener):
 
 def StreamingMap(coords):
     clear_window()
-    time_streaming = 20
+    time_streaming = 150
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Starting tweet streaming for " + str(time_streaming) + " seconds..." + color.ENDC)
     time.sleep(1)
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     twitter_api = tweepy.API(auth, wait_on_rate_limit_notify=True,
         wait_on_rate_limit=True, retry_count=10, retry_delay=5,retry_errors=5)
-
+    list_key_words=["huelga", "feminista", "mujer", "Mujer", "8 marzo", "8Marzo"]
     streamListener = TwitterStreamListener(time_streaming)
     myStream = tweepy.streaming.Stream(auth, streamListener)
-    myStream.filter(locations=coords)
+    myStream.filter(track=list_key_words)
 
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "Generating map..." + color.ENDC)
     print(color.BLUE + "[+] " + color.ENDC + color.INFO + "You will find it in Maps/MapsHTML..." + color.ENDC)
@@ -79,7 +79,5 @@ def StreamingMap(coords):
         outfile.write(str(x)+",")
         outfile.write(str(y)+"\n")
         j = j+1
-
-
     outfile.close()
     maps.mapaLeaflet()
