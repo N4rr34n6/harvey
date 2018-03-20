@@ -4,6 +4,11 @@
 
 Este proyecto dejo de tener soporte y queda a disposición del resto de usuarios para su desarrollo personal.
 
+Entradas en FWHIBBIT relacionadas:
+
++ [Entrada primera parte](https://www.fwhibbit.es/harvey-v1-2-analisis-de-un-objetivo-parte-i)
++ [Entrada segunda parte](https://www.fwhibbit.es/harvey-v1-2-vigilancia-y-monitorizacion-en-twitter-parte-ii)
+
 
 ## [FWHIBBIT](http://fwhibbit.github.io/) - [Blog](https://fwhibbit.es/)
 
@@ -31,28 +36,6 @@ Este proyecto dejo de tener soporte y queda a disposición del resto de usuarios
 Basta con lanzar el programa principal utilizando python2.
 
     python2 main.py
-
-## Ejemplos gráficos
-
-![mapa1](Images/leafletmap.png)
-
-## Versión actual v1.2
-Cambios realizados:
-
-- Visualización de un objetivo vía web.
-- Unificación del geoposicionamiento nacional y mundial.
-- Mapas realizados utilizando Leaflet. Generación de mapa en formato HTML.
-
-## Cómo contribuir
-
-Si quereis colaborar desde github tenéis que:
-
-  - En el repositorio original hacer un **fork** del repositorio, para tenerlo en vuestro perfil.
-  - Hacer un git clone del repositorio que habeis hecho fork en vuestro ordenador.
-  - Modificar lo que querais
-  - Subirlo a vuestra cuenta (git push normal)
-  - Desde github.com teneis que ir al repositorio vuestro y darle al botón "New pull request"
-  - Y esperar a que desde esta cuenta de github se acepten los cambios.
 
 ## Copyright and License
 
