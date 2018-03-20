@@ -1,8 +1,8 @@
 # [HARVEY](https://juanvelascogomez.github.io/harvey/)
 
-## Cambios previstos (Sin fecha estimada)
+## Proyecto sin soporte
 
-[![trello](Images/trello.png)](https://trello.com/b/hMGo518O)
+Este proyecto dejo de tener soporte y queda a disposición del resto de usuarios para su desarrollo personal.
 
 
 ## [FWHIBBIT](http://fwhibbit.github.io/) - [Blog](https://fwhibbit.es/)
